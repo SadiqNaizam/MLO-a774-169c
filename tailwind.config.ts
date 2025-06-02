@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -19,6 +20,7 @@ export default {
 		},
 		extend: {
 			colors: {
+        // Shadcn UI semantic color mappings (use CSS variables)
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -61,13 +63,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // PRD specific colors (direct hex values for convenience)
+        'prd-bg': '#F8F8FC',
+        'prd-btn-bg': '#FFFFFF',
+        'prd-icon': '#212529',
+        'prd-text-primary': '#212529',
+        'prd-text-secondary': '#878A99',
 			},
 			borderRadius: {
+        // Standard Shadcn UI approach, using CSS --radius variable
+        // --radius is set to 0.375rem in index.css to match PRD's 'rounded-md' default
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
